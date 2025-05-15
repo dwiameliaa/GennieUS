@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_beranda"
+        android:icon="@drawable/beranda"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/nav_hadiah"
+        android:icon="@drawable/hadiah"
+        android:title="Hadiah" />
+
+    <item
+        android:id="@+id/nav_game"
+        android:icon="@drawable/game"
+        android:title="Game" />
+
+    <item
+        android:id="@+id/nav_peringkat"
+        android:icon="@drawable/peringkat"
+        android:title="Peringkat" />
+
+    <item
+        android:id="@+id/nav_pengaturan"
+        android:icon="@drawable/pengaturan"
+        android:title="Pengaturan" />
+
+</menu>

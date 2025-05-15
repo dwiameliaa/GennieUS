@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".SyaratKetentuan">
+
+    <ImageView
+        android:id="@+id/iv_kembali"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:src="@drawable/arrowback" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Syarat &amp; Ketentuan"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="26dp"
+                android:text="Sebelum melangkah lebih jauh, yuk baca dulu dan setujui syarat dan ketentuan yang berlaku"
+                android:textAlignment="center"
+                android:textColor="#C1C1C1" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Penerimaan Syarat"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="Dengan mendaftar dan menggunakan aplikasi GennieUS, pengguna menyetujui untuk mematuhi semua syarat dan ketentuan yang ditetapkan. Jika pengguna tidak setuju, disarankan untuk tidak menggunakan aplikasi ini."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. Akun Pengguna"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="- Pengguna wajib mengisi data pendaftaran dengan benar, seperti nama lengkap, email, kelas, dan kata sandi.&#10;- Keamanan akun adalah tanggung jawab masing-masing pengguna. Jangan membagikan informasi akun kepada pihak lain."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3. Hak Cipta dan Lisensi"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="- Seluruh konten dalam aplikasi, seperti teks, gambar, audio, karakter, dan game edukasi adalah milik GennieUS dan dilindungi oleh hak cipta.&#10;-   Dilarang menggandakan, memperbanyak, atau menggunakan konten aplikasi untuk kepentingan komersial tanpa izin tertulis dari pengembang."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4. Privasi dan Data Pengguna"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="- Data yang dikumpulkan hanya digunakan untuk keperluan edukasi dan peningkatan pengalaman belajar pengguna.&#10;- GennieUS berkomitmen menjaga kerahasiaan data pengguna dan tidak akan membagikan data kepada pihak ketiga tanpa izin."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5. Perilaku Pengguna"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="Pengguna dilarang menggunakan aplikasi untuk aktivitas yang melanggar hukum, mengganggu kenyamanan pengguna lain, atau menyalahgunakan fitur aplikasi."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6. Pembaruan Aplikasi"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="GennieUS berhak melakukan pembaruan pada fitur, tampilan, maupun ketentuan aplikasi kapan saja untuk meningkatkan layanan."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7. Penutupan Akun"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:text="GennieUS berhak menangguhkan atau menutup akun pengguna yang melanggar syarat dan ketentuan ini."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8. Batasan Tanggung Jawab"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    android:layout_marginHorizontal="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="40dp"
+                    android:text="GennieUS tidak bertanggung jawab atas kerugian atau kerusakan yang timbul akibat penggunaan aplikasi di luar kendali pengembang."/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

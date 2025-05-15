@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".PeringkatFragment">
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/leaderboard" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_title"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFAED"
+        app:cardCornerRadius="16dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="16dp"
+                android:backgroundTint="#B6DFE1">
+
+                <RelativeLayout
+                    android:id="@+id/row1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_medal1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/medal1" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_medal1"
+                        android:src="@drawable/arle" />
+
+                    <TextView
+                        android:id="@+id/tv_nama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava1"
+                        android:text="Arlecchino Putri" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 984"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user2"
+                android:layout_below="@id/cv_user1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="16dp"
+                android:backgroundTint="#ECC787"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/row2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/row1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/iv_medal2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/medal2" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_medal2"
+                        android:src="@drawable/kinich" />
+
+                    <TextView
+                        android:id="@+id/tv_nama2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava2"
+                        android:text="Maulana Kinich" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 899"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user3"
+                android:layout_below="@id/cv_user2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#F5B0AD">
+
+                <RelativeLayout
+                    android:id="@+id/row3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/row1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/iv_medal3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/medal3" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_medal3"
+                        android:src="@drawable/neuvi" />
+
+                    <TextView
+                        android:id="@+id/tv_nama3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava3"
+                        android:text="Neuvillette" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 833"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user4"
+                android:layout_below="@id/cv_user3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/row4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/row1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/iv_medal4"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/rank4" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="4dp"
+                        android:layout_toEndOf="@+id/iv_medal4"
+                        android:src="@drawable/furina" />
+
+                    <TextView
+                        android:id="@+id/tv_nama4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava4"
+                        android:text="Lady Furina" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 671"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user5"
+                android:layout_below="@id/cv_user4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/row5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/row1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/iv_medal5"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/rank5" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginVertical="4dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_medal5"
+                        android:src="@drawable/albedo" />
+
+                    <TextView
+                        android:id="@+id/tv_nama5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava5"
+                        android:text="Albudi Tabuti" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 431"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_user6"
+                android:layout_below="@id/cv_user5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/row6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/row1"
+                    android:layout_marginTop="3dp">
+
+                    <ImageView
+                        android:id="@+id/iv_medal6"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/rank6" />
+
+                    <ImageView
+                        android:id="@+id/iv_ava6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginVertical="4dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/iv_medal6"
+                        android:src="@drawable/kazuha" />
+
+                    <TextView
+                        android:id="@+id/tv_kazuha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@+id/iv_ava6" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#00BFFF"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="6dp"
+                            android:text="⭐ 315"
+                            android:textColor="#FFFFFF" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

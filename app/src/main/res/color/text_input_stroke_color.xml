@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Saat input fokus (cursor aktif) -->
+    <item android:color="#343434" android:state_focused="true" />
+    <!-- Saat input tidak fokus -->
+    <item android:color="#C9C5C5" />
+</selector>

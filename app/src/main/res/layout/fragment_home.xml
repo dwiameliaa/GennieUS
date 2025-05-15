@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C5F0FF"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
+
+    <!-- Card profil -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_div"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="35dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_kazuha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:src="@drawable/kazuha" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_namaUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Level 5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#4338CA"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="25dp"
+                    app:cardCornerRadius="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:text="⭐ 315"
+                        android:textColor="#FFFFFF" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Daily Quest Title -->
+            <TextView
+                android:id="@+id/tv_dailyQuest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Misi Harian"
+                android:textColor="#3730A3"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Grid Quest -->
+            <GridLayout
+                android:id="@+id/gl_quest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:columnCount="2">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="92dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="15dp"
+                    app:cardCornerRadius="12dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:id="@+id/iv_buku"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/buku" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/progress" />
+
+                        <TextView
+                            android:id="@+id/tv_judul"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/iv_buku"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:text="Misi Membaca"
+                            android:textColor="#3730A3"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_judul"
+                            android:text="Membaca 3 cerita"
+                            android:textSize="12sp"
+                            android:textColor="#6B7280"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="92dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="12dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:id="@+id/iv_mtk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/mtk" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/progres" />
+
+                        <TextView
+                            android:id="@+id/tv_judul2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/iv_mtk"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center_vertical"
+                            android:text="Tantangan Mtk"
+                            android:textColor="#3730A3"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_judul2"
+                            android:text="Selesaikan 5 masalah"
+                            android:textSize="12sp"
+                            android:textColor="#6B7280"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+            <!-- Petualangan Belajar Title -->
+            <TextView
+                android:id="@+id/tv_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Petualangan Belajar"
+                android:textColor="#3730A3"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- RecyclerView Home -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="0dp" />
+
+            <!-- Tampilkan Semua -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="3dp"
+                    android:clickable="true"
+                    android:textStyle="bold"
+                    android:focusable="true"
+                    android:text="Tampilkan Semua" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/more" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Riwayat Aktivitas"
+                android:textColor="#3730A3"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                app:cardCornerRadius="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/history1"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_judulhistori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image1"
+                        android:text="Misteri Matematika"
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image1"
+                        android:layout_below="@+id/tv_judulhistori"
+                        android:text="Menyelesaikan Tantangan Matematika"
+                        android:textSize="12sp"
+                        android:textColor="#6B7280"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+55 XP "
+                        android:textColor="#7C3AED"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                app:cardCornerRadius="12dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/history2"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_judulhistori2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image2"
+                        android:text="Waktunya Cerita"
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image2"
+                        android:layout_below="@+id/tv_judulhistori2"
+                        android:text="Membaca Cerita Misteri Hutan"
+                        android:textSize="12sp"
+                        android:textColor="#6B7280"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+35 XP "
+                        android:textColor="#7C3AED"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="95dp"
+                android:clipToPadding="false"
+                app:cardCornerRadius="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/image3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/history1"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_judulhistori3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image3"
+                        android:text="Misteri Matematika"
+                        android:textColor="#1F2937"
+                        android:textSize="16sp"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/image3"
+                        android:layout_below="@+id/tv_judulhistori3"
+                        android:text="Menyelesaikan Tantangan Matematika"
+                        android:textSize="12sp"
+                        android:textColor="#6B7280"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+30 XP "
+                        android:textColor="#7C3AED"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
