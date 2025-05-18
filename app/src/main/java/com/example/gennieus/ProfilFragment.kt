@@ -54,18 +54,6 @@ class ProfilFragment : Fragment() {
         bottomNav.visibility = View.GONE
 
 
-        // Tombol simpan perubahan
-        val btnSimpan = view.findViewById<Button>(R.id.btn_simpan)
-
-        btnSimpan.setOnClickListener {
-            Toast.makeText(requireContext(), "Perubahan berhasil disimpan.", Toast.LENGTH_SHORT)
-                .show()
-
-//            ini untuk yang activity biasa
-//            Toast.makeText(this, "Harap isi data dengan lengkap", Toast.LENGTH_SHORT).show()
-        }
-
-
         // Menampilkan data user dari SharedPreferences
         val sharedPref =
             requireActivity().getSharedPreferences("UserData", android.content.Context.MODE_PRIVATE)
@@ -86,6 +74,40 @@ class ProfilFragment : Fragment() {
         etUsername.text = Editable.Factory.getInstance().newEditable(username)
         etEmail.text = Editable.Factory.getInstance().newEditable(emailUser)
         autoCompleteKelass.setText(kelass, false) // false: tidak memicu dropdown terbuka
+
+        // Tombol simpan perubahan
+        val btnSimpan = view.findViewById<Button>(R.id.btn_simpan)
+
+        btnSimpan.setOnClickListener {
+
+            val newFullName = etFullname.text.toString().trim()
+            val newUsername = etUsername.text.toString().trim()
+            val newEmail = etEmail.text.toString().trim()
+            val newKelas = autoCompleteKelass.text.toString().trim()
+
+
+            // Validasi sederhana
+            if (newFullName.isBlank() || newUsername.isBlank() || newEmail.isBlank() || newKelas.isBlank()) {
+                Toast.makeText(requireContext(), "Harap isi dengan lengkap", Toast.LENGTH_SHORT).show()
+            } else {
+                // Simpan perubahan ke SharedPreferences
+                with(sharedPref.edit()) {
+                    putString("fullname", newFullName)
+                    putString("username", newUsername)
+                    putString("email", newEmail)
+                    putString("kelas", newKelas)
+
+
+                    apply()
+                }
+
+                Toast.makeText(requireContext(), "Perubahan berhasil disimpan", Toast.LENGTH_SHORT).show()
+            }
+
+//            ini untuk yang activity biasa
+//            Toast.makeText(this, "Harap isi data dengan lengkap", Toast.LENGTH_SHORT).show()
+        }
+
 
 
         return view

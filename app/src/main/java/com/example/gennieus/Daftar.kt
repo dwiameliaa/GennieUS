@@ -111,6 +111,7 @@ class Daftar : AppCompatActivity() {
         val emailUser = findViewById<TextInputEditText>(R.id.et_email)
         val pilihKelas = findViewById<AutoCompleteTextView>(R.id.autoCompleteKelas)
         val ceklisSyarat = findViewById<CheckBox>(R.id.cekBox)
+
         val buttonDaftar = findViewById<Button>(R.id.btn_daftar)
 
         // Proses daftar
