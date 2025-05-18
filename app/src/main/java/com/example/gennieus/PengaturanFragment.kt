@@ -31,6 +31,16 @@ class PengaturanFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        val gantiPass = view.findViewById<CardView>(R.id.cv_pass)
+
+        gantiPass.setOnClickListener {
+            // Ganti fragment manual
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, GantiPasswordFragment())
+            fragmentTransaction.addToBackStack(null) // supaya bisa klik tombol back
+            fragmentTransaction.commit()
+        }
+
         // menampilakan nama lengkap user
         val sharedPreff = requireActivity().getSharedPreferences("UserData", android.content.Context.MODE_PRIVATE)
         val fullName = sharedPreff.getString("fullname", "User") // "User" sebagai default
