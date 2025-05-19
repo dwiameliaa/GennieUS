@@ -1,4 +1,6 @@
 package com.example.gennieus
 
-class GameItem {
-}
+data class GameItem(
+    val title: String,
+    val imageResId: Int
+)

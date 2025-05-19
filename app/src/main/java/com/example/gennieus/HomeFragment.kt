@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
             R.drawable.image1,
             "Misteri Matematika",
             "Angka dan Hitung",
-            "Mempelajari angka-angka ajaib, pola hitungan, dan trik matematika yang seru untuk anak kelas 3 SD."
+            "Mempelajari angka-angka ajaib, pola hitungan, dan trik matematika yang seru."
         ),
         CardItem(
             R.drawable.image2,

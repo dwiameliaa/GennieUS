@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gennieus.R
 import kotlin.random.Random
@@ -33,6 +34,18 @@ class GamePenjumlahan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_penjumlahan)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Instruksi")
+        builder.setMessage("Pilih minimal 2 kotak angka. Jumlahkan angkanya supaya hasilnya genap ya! Kalau genap, kamu dapat poin. Yuk, coba!")
+
+        builder.setPositiveButton("Oke") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+
 
         gridLayout = findViewById(R.id.gridLayout)
         btnCheck = findViewById(R.id.btnCheck)

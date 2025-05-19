@@ -43,7 +43,7 @@ class GameFragment : Fragment() {
                 R.drawable.image1,
                 "Misteri Matematika",
                 "Angka dan Hitung",
-                "Belajar menjumlahkan angka dengan cara seru! Latih kemampuan menghitung sambil menemukan hasil angka genap dalam permainan yang menyenangkan."
+                "Mempelajari angka-angka ajaib, pola hitungan, dan trik matematika yang seru."
             )
         )
         cardList.add(
