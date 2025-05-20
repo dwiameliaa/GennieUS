@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PengaturanFragment : Fragment() {
 
@@ -41,12 +43,34 @@ class PengaturanFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-        // menampilakan nama lengkap user
-        val sharedPreff = requireActivity().getSharedPreferences("UserData", android.content.Context.MODE_PRIVATE)
-        val fullName = sharedPreff.getString("fullname", "User") // "User" sebagai default
+//        // menampilakan nama lengkap user
+//        val sharedPreff = requireActivity().getSharedPreferences("UserData", android.content.Context.MODE_PRIVATE)
+//        val fullName = sharedPreff.getString("fullname", "User") // "User" sebagai default
+//
+//        val textView = view.findViewById<TextView>(R.id.tv_namaUser)
+//        textView.text = "$fullName"
+
+        // menampilkan nama lengkap user
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val db = FirebaseFirestore.getInstance()
 
         val textView = view.findViewById<TextView>(R.id.tv_namaUser)
-        textView.text = "$fullName"
+
+        if (uid != null) {
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val fullName = document.getString("nama") ?: "User"
+                        textView.text = fullName
+                    } else {
+                        textView.text = "User"
+                    }
+                }
+                .addOnFailureListener {
+                    textView.text = "User"
+                }
+        }
 
         // keluar dari info login saat ini, jadi akan pergi halaman awal
         val buttonKeluar = view.findViewById<CardView>(R.id.cv_keluar)

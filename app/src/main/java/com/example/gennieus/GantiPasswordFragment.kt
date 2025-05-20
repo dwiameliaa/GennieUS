@@ -17,6 +17,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
 
 class GantiPasswordFragment : Fragment() {
 
@@ -54,37 +56,49 @@ class GantiPasswordFragment : Fragment() {
         val passwordBaruUlang = view.findViewById<TextInputEditText>(R.id.et_passwordbaruUlang)
 
         btnGanti.setOnClickListener {
+            val passwordLama = passwordEditText.text.toString().trim()
+            val passwordBaru1 = passwordBaru.text.toString().trim()
+            val passwordBaru2 = passwordBaruUlang.text.toString().trim()
 
-            val passwordInput = passwordEditText.text.toString().trim()
-            val passwordInputBaru = passwordBaru.text.toString().trim()
-            val passwordInputBaruUlang = passwordBaruUlang.text.toString().trim()
+            val user = FirebaseAuth.getInstance().currentUser
 
-            if (passwordInput.isNotEmpty() && passwordInputBaru.isNotEmpty() && passwordInputBaruUlang.isNotEmpty()) {
-                val sharedPref = requireActivity().getSharedPreferences("UserData", MODE_PRIVATE)
-                val savedPassword = sharedPref.getString("password", null)
+            if (passwordLama.isNotEmpty() && passwordBaru1.isNotEmpty() && passwordBaru2.isNotEmpty()) {
 
-                // Simpan perubahan ke SharedPreferences
-                with(sharedPref.edit()) {
-                    putString("password", passwordInputBaru)
-                    apply()
+                if (passwordBaru1 != passwordBaru2) {
+                    Toast.makeText(requireContext(), "Konfirmasi kata sandi tidak cocok", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
 
-                if (passwordInput == savedPassword) {
-                    parentFragmentManager.popBackStack()
-                    Toast.makeText(requireContext(), "Kata sandi berhasil diganti!", Toast.LENGTH_SHORT).show()
+                if (user != null && user.email != null) {
+                    val credential = EmailAuthProvider.getCredential(user.email!!, passwordLama)
 
-                    // Tampilkan lagi BottomNavigationView
-                    val bottomNav =
-                        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                    bottomNav.visibility = View.VISIBLE
+                    user.reauthenticate(credential)
+                        .addOnSuccessListener {
+                            user.updatePassword(passwordBaru1)
+                                .addOnSuccessListener {
+                                    Toast.makeText(requireContext(), "Kata sandi berhasil diganti!", Toast.LENGTH_SHORT).show()
+                                    parentFragmentManager.popBackStack()
 
+                                    // Tampilkan kembali bottom nav
+                                    val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+                                    bottomNav.visibility = View.VISIBLE
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(requireContext(), "Gagal mengganti kata sandi: ${e.message}", Toast.LENGTH_LONG).show()
+                                }
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Autentikasi ulang gagal: ${e.message}", Toast.LENGTH_LONG).show()
+                        }
                 } else {
-                    Toast.makeText(requireContext(), "Kata sandi lama anda salah", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "User tidak ditemukan. Silakan login kembali.", Toast.LENGTH_LONG).show()
                 }
+
             } else {
-                Toast.makeText(requireContext(), "Harap isi data dengan lengkap", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Harap isi semua kolom", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         // page lupa password
         val lupaPass = view.findViewById<TextView>(R.id.tv_lupaPass)

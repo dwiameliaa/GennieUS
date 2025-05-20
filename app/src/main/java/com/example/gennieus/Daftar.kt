@@ -9,23 +9,21 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class Daftar : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_daftar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -33,124 +31,107 @@ class Daftar : AppCompatActivity() {
             insets
         }
 
-        // Auto Complete pilihan kelas
+        auth = FirebaseAuth.getInstance()
+
         val autoCompleteKelas = findViewById<AutoCompleteTextView>(R.id.autoCompleteKelas)
-        val kelas = listOf("Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4", "Kelas 5", "Kelas 6")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, kelas)
+        val kelasList = listOf("Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4", "Kelas 5", "Kelas 6")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, kelasList)
         autoCompleteKelas.setAdapter(adapter)
+        autoCompleteKelas.setOnClickListener { autoCompleteKelas.showDropDown() }
 
-        // supaya langsung muncul saat diklik
-        autoCompleteKelas.setOnClickListener {
-            autoCompleteKelas.showDropDown()
-        }
-
-
-        // Untuk pindah halaman ke syarat dan ketentuan
-        val textView = findViewById<CheckBox>(R.id.cekBox)
+        val checkBox = findViewById<CheckBox>(R.id.cekBox)
         val fullText = "Dengan membuat akun, Anda setuju dengan Syarat & Ketentuan kami"
         val spannableString = SpannableString(fullText)
-
-
-        // Tentukan bagian teks yang ingin dibuat link
         val clickableText = "Syarat & Ketentuan kami"
         val startIndex = fullText.indexOf(clickableText)
         val endIndex = startIndex + clickableText.length
 
-        // Buat clickable span
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                // Aksi saat teks diklik ➔ pindah halaman
                 val intent = Intent(this@Daftar, SyaratKetentuan::class.java)
                 startActivity(intent)
             }
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.isUnderlineText = false // Tidak pakai garis bawah
-                ds.color = Color.BLUE // Warna teks biru
-//                ds.color = Color.parseColor("#0099FF")
+                ds.isUnderlineText = false
+                ds.color = Color.parseColor("#0099FF")
             }
         }
 
-        spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            clickableSpan,
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        checkBox.text = spannableString
+        checkBox.movementMethod = LinkMovementMethod.getInstance()
+        checkBox.highlightColor = Color.TRANSPARENT
 
-        textView.text = spannableString
-        textView.movementMethod = LinkMovementMethod.getInstance()
-        textView.highlightColor = Color.TRANSPARENT
-
-        // button udah punya akun -> masuk
-        val pindahMasuk = findViewById<TextView>(R.id.tv_pindahMasuk)
-
-        pindahMasuk.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+        findViewById<TextView>(R.id.tv_pindahMasuk).setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
         }
 
-        // button back
-        val kembalihalamanawal = findViewById<ImageView>(R.id.iv_kembali)
-
-        kembalihalamanawal.setOnClickListener {
-            val intent = Intent(this, HalamanAwal::class.java)
-            startActivity(intent)
+        findViewById<ImageView>(R.id.iv_kembali).setOnClickListener {
+            startActivity(Intent(this, HalamanAwal::class.java))
         }
-
-        // button daftar
-        val masukBeranda = findViewById<Button>(R.id.btn_daftar)
-
-        masukBeranda.setOnClickListener {
-            val intent = Intent(this, MainMenuActivity::class.java)
-            startActivity(intent)
-        }
-
-
-        // cek form masuk apakah sudah diisi semua
-        // Input field
-        val namaLengkap = findViewById<TextInputEditText>(R.id.et_fullname)
-        val usernameEditText = findViewById<TextInputEditText>(R.id.et_username)
-        val passwordEditText = findViewById<TextInputEditText>(R.id.et_password)
-        val emailUser = findViewById<TextInputEditText>(R.id.et_email)
-        val pilihKelas = findViewById<AutoCompleteTextView>(R.id.autoCompleteKelas)
-        val ceklisSyarat = findViewById<CheckBox>(R.id.cekBox)
 
         val buttonDaftar = findViewById<Button>(R.id.btn_daftar)
 
-        // Proses daftar
         buttonDaftar.setOnClickListener {
-            val username = usernameEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
-            val nama = namaLengkap.text.toString().trim()
-            val email = emailUser.text.toString().trim()
-            val kelas = pilihKelas.text.toString().trim()
-            val isChecked = ceklisSyarat.isChecked
+            val fullname = findViewById<TextInputEditText>(R.id.et_fullname).text.toString().trim()
+            val username = findViewById<TextInputEditText>(R.id.et_username).text.toString().trim()
+            val email = findViewById<TextInputEditText>(R.id.et_email).text.toString().trim()
+            val password = findViewById<TextInputEditText>(R.id.et_password).text.toString().trim()
+            val kelas = autoCompleteKelas.text.toString().trim()
+            val agree = checkBox.isChecked
 
-            if (username.isNotEmpty() && password.isNotEmpty() && nama.isNotEmpty() &&
-                email.isNotEmpty() && kelas.isNotEmpty() && isChecked) {
+            if (email.isNotEmpty() && password.isNotEmpty() && fullname.isNotEmpty() &&
+                username.isNotEmpty() && kelas.isNotEmpty() && agree) {
 
-                // Simpan data email dan password ke SharedPreferences
-                val sharedPref = getSharedPreferences("UserData", MODE_PRIVATE)
-                val editor = sharedPref.edit()
-                editor.putString("username", username)
-                editor.putString("password", password)
-                editor.putString("fullname", nama)
-                editor.putString("email", email)
-                editor.putString("kelas", kelas)
-                editor.apply()
+                val firestore = FirebaseFirestore.getInstance()
 
-                Toast.makeText(this, "Pendaftaran berhasil! Silakan login.", Toast.LENGTH_SHORT).show()
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val uid = auth.currentUser?.uid ?: return@addOnCompleteListener
 
-                // Pindah ke halaman login
-                val intent = Intent(this, Login::class.java)
-                startActivity(intent)
-                finish()
+                            // Buat data user
+                            val userData = hashMapOf(
+                                "nama" to fullname,
+                                "username" to username,
+                                "kelas" to kelas,
+                                "email" to email
+                            )
+
+                            // Simpan ke koleksi "users" dengan dokumen ID = uid
+                            firestore.collection("users").document(uid)
+                                .set(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, Login::class.java))
+                                    finish()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Gagal simpan data: ${e.message}", Toast.LENGTH_LONG).show()
+                                }
+
+//                            Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+//                            startActivity(Intent(this, Login::class.java))
+//                            finish()
+                        } else {
+                            Toast.makeText(this, "Gagal daftar: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        }
+
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_LONG).show()
+                    }
+
             } else {
                 Toast.makeText(this, "Harap isi data dengan lengkap", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-
-
     }
 }

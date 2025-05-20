@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gennieus.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.random.Random
 
 class GamePenjumlahan : AppCompatActivity() {
@@ -68,6 +70,36 @@ class GamePenjumlahan : AppCompatActivity() {
 
 
     }
+
+    private fun tambahPoinKeFirestore(jumlahPoin: Int) {
+        val user = FirebaseAuth.getInstance().currentUser
+        val db = FirebaseFirestore.getInstance()
+
+        if (user != null) {
+            val userDocRef = db.collection("users").document(user.uid)
+
+            db.runTransaction { transaction ->
+                val snapshot = transaction.get(userDocRef)
+                val poinSekarang = snapshot.getLong("poin") ?: 0
+                transaction.update(userDocRef, "poin", poinSekarang + jumlahPoin)
+            }.addOnSuccessListener {
+                // Tampilkan alert berhasil
+                AlertDialog.Builder(this)
+                    .setTitle("Selamat!")
+                    .setMessage("Kamu mendapatkan $jumlahPoin poin.")
+                    .setPositiveButton("Oke") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }.addOnFailureListener {
+                // Tampilkan alert gagal
+                AlertDialog.Builder(this)
+                    .setTitle("Gagal")
+                    .setMessage("Terjadi kesalahan saat menambahkan poin.")
+                    .setPositiveButton("Oke") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
+        }
+    }
+
 
 
     private fun generateKotak() {
@@ -129,6 +161,7 @@ class GamePenjumlahan : AppCompatActivity() {
 
         if (totalPercobaan >= maxPercobaan) {
             txtResult.append("\nPermainan selesai!")
+            tambahPoinKeFirestore(15) // Tambahkan poin setelah selesai
             akhiriPermainan()
         } else {
             generateKotak() // buat soal baru

@@ -161,46 +161,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="9dp"
-                    android:src="@drawable/email" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
-                android:textColorHint="#C9C5C5"
-                app:boxCornerRadiusBottomEnd="17dp"
-                app:boxCornerRadiusBottomStart="17dp"
-                app:boxCornerRadiusTopEnd="17dp"
-                app:boxCornerRadiusTopStart="17dp"
-                app:boxStrokeColor="@color/text_input_stroke_color"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="kazuha@gmail.com"
-                    android:padding="10dp"
-                    android:textSize="14sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="9dp"
                     android:src="@drawable/kelas" />
 
                 <TextView

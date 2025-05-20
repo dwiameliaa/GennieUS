@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HadiahFragment : Fragment() {
 
@@ -47,12 +49,31 @@ class HadiahFragment : Fragment() {
             }
         }
 
-        // menampilakan nama lengkap user
-        val sharedPreff = requireActivity().getSharedPreferences("UserData", android.content.Context.MODE_PRIVATE)
-        val fullName = sharedPreff.getString("fullname", "User") // "User" sebagai default
+        // menampilkan nama lengkap user
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val db = FirebaseFirestore.getInstance()
 
         val textView = view.findViewById<TextView>(R.id.tv_namaUser)
-        textView.text = "$fullName"
+        val tvPoin = view.findViewById<TextView>(R.id.tv_poin)
+
+        if (uid != null) {
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val fullName = document.getString("nama") ?: "User"
+                        val poin = document.getLong("poin") ?: 0
+
+                        textView.text = fullName
+                        tvPoin.text = "$poin"
+                    } else {
+                        textView.text = "User"
+                    }
+                }
+                .addOnFailureListener {
+                    textView.text = "User"
+                }
+        }
 
         return view
     }

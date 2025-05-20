@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "251775942277",
+    "project_id": "gennieus",
+    "storage_bucket": "gennieus.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251775942277:android:8163d0f49da2cd10e3f3ec",
+        "android_client_info": {
+          "package_name": "com.example.gennieus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnxV5L8PMs4lhwtvt8x8qVcQCV-EKI-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

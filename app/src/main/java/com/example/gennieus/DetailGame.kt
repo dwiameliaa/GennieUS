@@ -39,13 +39,6 @@ class DetailGame : AppCompatActivity() {
         descriptionView.text = description
 
 
-        // button back
-        val kembaliGame = findViewById<ImageView>(R.id.iv_kembali)
-
-        kembaliGame.setOnClickListener {
-            val intent = Intent(this, GameFragment::class.java)
-            startActivity(intent)
-        }
 
         // untuk menampilkan list game
 
