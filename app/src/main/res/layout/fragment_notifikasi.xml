@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/fragment_container"
+    tools:context=".NotifikasiFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_kembali"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:src="@drawable/arrowback" />
+
+        <!-- Judul -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengaturan Notifikasi"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:orientation="vertical">
+
+
+
+            <!-- Checkbox pengingat misi -->
+            <CheckBox
+                android:id="@+id/checkbox_aktivitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aktifkan Pengingat Misi Harian" />
+
+            <!-- Label waktu pengingat -->
+            <TextView
+                android:id="@+id/tv_waktu_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Waktu Pengingat"
+                android:textStyle="bold"
+                android:paddingTop="16dp"
+                android:visibility="gone" />
+
+            <!-- Tombol pilih waktu -->
+            <Button
+                android:id="@+id/btn_pilih_waktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Waktu"
+                android:backgroundTint="#03A9F4"
+                android:visibility="gone" />
+
+            <!-- TextView untuk menampilkan waktu terpilih -->
+            <TextView
+                android:id="@+id/tv_waktu_terpilih"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum ada waktu dipilih"
+                android:paddingTop="8dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

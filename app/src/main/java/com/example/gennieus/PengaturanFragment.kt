@@ -105,6 +105,17 @@ class PengaturanFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        // ke menu notif , ketambahan fragment notif, notif receiver
+        val notifikasi = view.findViewById<CardView>(R.id.cv_notif)
+
+        notifikasi.setOnClickListener {
+            // Ganti fragment manual
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, NotifikasiFragment())
+            fragmentTransaction.addToBackStack(null) // supaya bisa klik tombol back
+            fragmentTransaction.commit()
+        }
+
         return view
     }
 }

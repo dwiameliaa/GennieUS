@@ -51,4 +51,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation("androidx.core:core:1.10.1") // atau versi lebih baru
 }

@@ -2,6 +2,7 @@ package com.example.gennieus
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -71,5 +72,16 @@ class Login : AppCompatActivity() {
         findViewById<TextView>(R.id.tv_lupaPass).setOnClickListener {
             startActivity(Intent(this, LupaPassword::class.java))
         }
+
+        // notif cek user udah login ke mana
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            val uid = user.uid
+            Log.d("FirebaseUID", "User UID: $uid")
+        } else {
+            Log.d("FirebaseUID", "User belum login")
+        }
+
+
     }
 }
