@@ -33,12 +33,15 @@ class NotificationReceiver : BroadcastReceiver() {
             notificationManager.createNotificationChannel(channel)
         }
 
+        Log.d("NotificationReceiver", "Mulai membuat notifikasi")
         val notification = NotificationCompat.Builder(context, "daily_reminder")
-            .setSmallIcon(R.drawable.kazuha) // Ganti dengan ikon kamu
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle("Pengingat Belajar")
             .setContentText("Hai! Jangan lupa untuk belajar hari ini dan jalankan misimu 💪")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
+        Log.d("NotificationReceiver", "Notifikasi sudah dibuat, siap tampil")
+
 
         notificationManager.notify(100, notification)
     }

@@ -5,6 +5,8 @@ import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,10 +17,13 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
+import android.Manifest
 
 class NotifikasiFragment : Fragment() {
 
@@ -40,6 +45,17 @@ class NotifikasiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_notifikasi, container, false)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val izinNotifikasi = ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.POST_NOTIFICATIONS)
+            if (izinNotifikasi != PackageManager.PERMISSION_GRANTED) {
+                Log.d("PermissionCek", "Belum dapat izin notifikasi")
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1001)
+            } else {
+                Log.d("PermissionCek", "Sudah dapat izin notifikasi")
+            }
+        }
+
 
         checkboxAktivitas = view.findViewById(R.id.checkbox_aktivitas)
         tvWaktuLabel = view.findViewById(R.id.tv_waktu_label)
@@ -169,7 +185,7 @@ class NotifikasiFragment : Fragment() {
             context,
             0,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_IMMUTABLE
         )
 
         val calendar = Calendar.getInstance().apply {

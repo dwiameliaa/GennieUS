@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.Manifest
+import android.util.Log
 
 class HalamanAwal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +27,15 @@ class HalamanAwal : AppCompatActivity() {
 
         // notif tambah permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            val izinNotifikasi = ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+            if (izinNotifikasi != PackageManager.PERMISSION_GRANTED) {
+                Log.d("PermissionCek", "Belum dapat izin notifikasi")
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1001)
+            } else {
+                Log.d("PermissionCek", "Sudah dapat izin notifikasi")
             }
         }
+
 
         val buttonMasuk = findViewById<Button>(R.id.btn_masuk)
         val intent = Intent(this, Login::class.java)

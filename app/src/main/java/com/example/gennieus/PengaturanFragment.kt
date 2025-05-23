@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
@@ -103,6 +104,22 @@ class PengaturanFragment : Fragment() {
             fragmentTransaction.replace(R.id.fragment_container, HapusAkunFragment())
             fragmentTransaction.addToBackStack(null) // supaya bisa klik tombol back
             fragmentTransaction.commit()
+        }
+
+        // ke menu ganti bahasa
+        val buttonBahasa = view.findViewById<CardView>(R.id.cv_bahasa)
+
+        buttonBahasa.setOnClickListener {
+            Toast.makeText(requireActivity(), "Fitur ini belum tersedia. Kami sedang mengembangkannya untuk rilis mendatang",
+                Toast.LENGTH_SHORT).show()
+        }
+
+        // ke menu ganti bahasa
+        val buttonPusatBantuan = view.findViewById<CardView>(R.id.cv_bantuan)
+
+        buttonPusatBantuan.setOnClickListener {
+            Toast.makeText(requireActivity(), "Fitur ini belum tersedia. Kami sedang mengembangkannya untuk rilis mendatang",
+                Toast.LENGTH_SHORT).show()
         }
 
         // ke menu notif , ketambahan fragment notif, notif receiver
